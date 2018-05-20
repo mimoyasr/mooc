@@ -1,0 +1,47 @@
+
+<div class=container >
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @lecture.title %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @lecture.content.html_safe %>
+</p>
+
+<p>
+  <strong>File:</strong>
+  <a href='<%=@lecture.file%>' > Download </a>
+</p>
+
+<p>
+  <strong>Course:</strong>
+  <%= @lecture.course_id %>
+</p>
+
+<%= link_to like_lecture_path(@lecture), class: "btn btn-success", method: :put do %>
+  Like
+  <%= @lecture.get_upvotes.size %>
+<% end %>
+
+<%= link_to dislike_lecture_path(@lecture), class: "btn btn-danger", method: :put do %>
+  Dislike
+  <%= @lecture.get_downvotes.size %>
+<% end %>
+
+
+
+<br>
+<br>
+
+<%= link_to 'Report', report_lecture_path(@lecture) , class: "btn btn-primary", method: :put  %> 
+<%= link_to 'Edit', edit_lecture_path(@lecture) , class: "btn btn-primary" %> 
+<%= link_to 'Back', lectures_path, class: "btn btn-primary" %>
+<br>
+<br>
+  <%= commontator_thread(@lecture) %>
+</div>
+

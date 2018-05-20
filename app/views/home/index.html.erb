@@ -1,0 +1,36 @@
+<br>
+<div class="container">
+    <div class=row >
+        <div class="col-4">
+            <div class="card">
+                <%= image_tag(@user.profile.url, alt: 'Profile', class: "card-img-top") if @user.profile? %>
+                <div class="card-body">
+                <hr>
+                    <p class="card-text" > Username : <span class="card-title" ><%= @user.name %></span></p>
+                    <p class="card-text" > Email : <span class="card-title" ><%= @user.email %></span></p>
+                </div>
+            </div>
+        </div>
+        <div class=col-8 >
+            <% @user.courses.each do |course| %>
+                <div class="card">
+                    <div class="card-header">
+                        <%=course.title%>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title"><%=course.title%></h5>
+                        <p class="card-text"><%=course.desc%></p>
+                          <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><%= link_to 'View', course , class: "text-primary"%></li>
+                            <li class="list-group-item"><%= link_to 'Edit', edit_course_path(course),  class: "text-primary" %></li>
+                            <li class="list-group-item "><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' }, class:"text-danger" %></li>
+                        </ul>
+                    </div>
+                </div>
+                <br>
+            <% end %>
+        </div>
+    </div>
+</div>
+
+

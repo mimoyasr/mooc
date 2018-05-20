@@ -1,0 +1,54 @@
+<div class="d-flex justify-content-center align-items-center container ">
+
+  <div class="row ">
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+
+    <h2>Update Profile</h2>
+    <%= devise_error_messages! %>
+
+     <div class="field form-group">
+      <%= f.label :profile %><br />
+      <%= f.file_field :profile, autocomplete: "off" , class: "form-control", placeholder: "Choose your smily face ;)"  %>
+    </div>
+
+    <div class="field form-group">
+      <%= f.label :name %><br />
+      <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control", placeholder: "Update your Name" %>
+    </div>
+
+    <div class="field form-group">
+      <%= f.label :email %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "Update your Email" %>
+    </div>
+
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <div class="text-info">Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+    <% end %>
+
+      <div class="field form-group">
+        <%= f.label :password %>
+        <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "leave blank if you don't want to change it" %>
+        <% if @minimum_password_length %>
+          <br/>
+          <em><%= @minimum_password_length %> characters minimum</em>
+        <% end %>
+      </div>
+
+      <div class="field form-group">
+        <%= f.label :password_confirmation %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder: "Confirm Your new Password " %>
+      </div>
+
+      <div class="field form-group">
+        <%= f.label :current_password %> <i></i><br />
+        <%= f.password_field :current_password, autocomplete: "off", class: "form-control", placeholder: "Please enter your old password" %>
+      </div>
+      <br> 
+      <div class="actions">
+        <%= f.submit "Update", class: "btn btn-primary" %>
+        <%= link_to  "Cancel", home_index_path , class: "btn btn-danger" %>
+      </div>
+  <% end %>
+
+ </div>
+</div>

@@ -1,0 +1,56 @@
+
+<style>
+
+.rem-me {
+  margin-top: 5px;
+}
+
+
+</style>
+<div class="d-flex justify-content-center align-items-center container ">
+
+
+<div class="row ">
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+<h2>Log in</h2>
+
+
+  <div class="field form-group">
+    <%= f.label :email %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "Enetr your email" %>
+  </div>
+
+  <div class="field form-group">
+    <%= f.label :password %>
+    <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Enetr your password" %>
+  </div>
+
+  <% if devise_mapping.rememberable? -%>
+    <div class="field form-group">
+    <div class="row">
+    <div class="col-8">
+      <%= f.label :remember_me %>
+    </div>
+    <div class="col-4">
+     <%= f.check_box :remember_me, class: "form-control rem-me" %>
+    </div>
+    </div>
+     
+      
+    </div>
+  <% end -%>
+
+  <div class="actions">
+    <%= f.submit "Log in" %>
+  </div>
+  <br>
+  <%= render "devise/shared/links" %>
+
+<% end %>
+
+
+</div>
+</div>
+
+

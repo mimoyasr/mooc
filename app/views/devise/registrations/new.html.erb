@@ -1,0 +1,58 @@
+<div class="d-flex justify-content-center align-items-center container ">
+
+
+<div class="row ">
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name))do |f| %>
+  <h2>Sign up</h2>
+  <%= devise_error_messages! %>
+
+  <div class="field form-group">
+    <%= f.label :profile %><br />
+    <%= f.file_field :profile, autocomplete: "off" , class: "form-control", placeholder: "Choose your smily face ;)"  %>
+  </div>
+
+   <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control", placeholder: "Enter your name" %>
+  </div>
+
+  <div class="field form-group">
+    <%= f.label :email %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "Enetr your email" %>
+  </div>
+
+  <div class="field form-group">
+    <%= f.label :password %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %>
+    <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Choose a strong password" %>
+  </div>
+
+  <div class="field form-group">
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder: "Confirm your password" %>
+  </div>
+
+  <div class="field form-group">
+    <%= f.label :dob %><br />
+    <%= f.date_field :dob, autocomplete: "off", class: "form-control" %>
+  </div>
+
+   <div class="field form-group">
+    <%= f.label :gender %><br />
+    <%= f.select :gender, User.genders.keys , autocomplete: "off" , class: "form-control" %>
+  </div>
+
+
+  <div class="actions">
+    <%= f.submit "Sign up", class: "btn btn-primary" %>
+  </div>
+  <br>
+  <%= render "devise/shared/links" %>
+<% end %>
+
+
+</div>
+</div>
